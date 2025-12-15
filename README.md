@@ -1,75 +1,103 @@
-# React + TypeScript + Vite
+# EverTry Frontend Developer Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains my submission for the **EverTry Frontend Developer React.js assessment**. The goal of this task was to build a simple, clean dashboard application that demonstrates component-based thinking, state management, and attention to UX.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧩 Overview
 
-## React Compiler
+The application includes:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- A basic login flow
+- A dashboard layout
+- A Todo-style list with add and remove functionality
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Login Page
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Simple login screen
+- On successful login, users are redirected to the dashboard
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Dashboard
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Header with logo and user profile
+- Statistic cards based on the Figma design
+- "Add to List" functionality
+
+### Todo-style List
+
+- Add new items to the list
+- Remove existing items
+- Prevents adding empty items
+- Clean and minimal interactions
+
+---
+
+## 🛠 Tech Stack
+
+- **React.js**
+- **TypeScript**
+- **Tailwind CSS** (for styling)
+- **Vite** (for development and bundling)
+
+---
+
+## 🧱 Project Structure
+
+```text
+src/
+├── assets/          # Images and static assets
+├── components/      # Reusable UI components (Input, Card, etc.)
+├── lib/             # Types, mock data, and helpers
+├── pages/           # Page-level components (Login, Dashboard)
+├── App.tsx          # App entry and routing
+├── main.tsx         # React DOM entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Prerequisites
+
+- Node.js (v18 or higher recommended)
+- npm, pnpm or bun
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Chibuike-web/ever-try-assessment.git
+
+# Navigate into the project
+cd evertry-assignment
+
+# Install dependencies
+npm install
 ```
+
+### Run Locally
+
+```bash
+npm run dev
+```
+
+The application will be available at:
+
+```
+http://localhost:5173
+```
+
+---
+
+## 🧠 Design & Implementation Notes
+
+- Components are kept small and reusable
+- State is managed using `useState` for simplicity
+- UI decisions favor clarity and minimalism
+- Tailwind utility classes are used consistently
+
+---
