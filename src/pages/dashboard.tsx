@@ -3,6 +3,8 @@ import avatar from "../assets/dashboard/avatar.png";
 import { Card } from "../components/card";
 import { card, initalItems } from "../lib/data";
 import type { Item } from "../lib/types";
+import Input from "../components/input";
+import Button from "../components/button";
 
 export default function Dashboard() {
 	return (
@@ -56,6 +58,9 @@ const Items = () => {
 	const removeItem = (id: string) => {
 		setItems((prev) => prev.filter((i) => i.id != id));
 	};
+	const handleInputChange = (value: string) => {
+		setValue(value);
+	};
 
 	return (
 		<div className="w-full">
@@ -71,23 +76,25 @@ const Items = () => {
 			</div>
 
 			{isAdding && (
-				<div className="flex gap-3">
-					<input
+				<div className="flex gap-3 max-w-2xl">
+					<Input
 						type="text"
 						value={value}
-						onChange={(e) => setValue(e.target.value)}
+						id="input"
+						name="input"
+						onChange={handleInputChange}
+						className="px-4"
 						placeholder="Enter item"
-						className="w-full h-12 px-4 bg-noble-black-600 border border-noble-black-500 rounded-[8px] text-noble-black-0 placeholder:text-noble-black-400 focus:outline-none"
 					/>
 
-					<button
+					<Button
 						onClick={() => {
 							addItem();
 						}}
-						className="h-12 px-6 bg-noble-green-500 rounded-[8px] text-noble-black-0 font-semibold"
+						className="w-max px-4"
 					>
 						Add
-					</button>
+					</Button>
 
 					<button
 						onClick={() => {
@@ -109,12 +116,12 @@ const Items = () => {
 					>
 						<p className="text-noble-black-0 font-medium truncate px-4">{i.title}</p>
 
-						<button
+						<Button
 							onClick={() => removeItem(i.id)}
-							className="text-sm bg-red-500 text-noble-black-0 px-4 h-10 rounded-[8px] flex items-center justify-center"
+							className="text-sm w-max bg-red-500 text-noble-black-0 px-4 h-10"
 						>
 							Remove
-						</button>
+						</Button>
 					</div>
 				))}
 			</div>

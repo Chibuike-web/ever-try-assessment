@@ -4,6 +4,7 @@ import MailIcon from "../icons/mail-icon";
 import PhoneIcon from "../icons/phone-icon";
 import UserIcon from "../icons/user-icon";
 import { useNavigate } from "react-router";
+import Button from "../components/button";
 
 const FIELD_LABELS: Record<string, string> = {
 	fullName: "Full name",
@@ -17,7 +18,8 @@ export default function LogIn() {
 		phoneNumber: "",
 	});
 	const [errors, setErrors] = useState<Record<string, string>>({});
-	const handleInputChange = (name: string, value: string) => {
+	const handleInputChange = (value: string, name?: string) => {
+		if (!name) return;
 		setErrors((prev) => ({
 			...prev,
 			[name]: "",
@@ -62,15 +64,19 @@ export default function LogIn() {
 								<label htmlFor="fullName" className="text-noble-black-300 font-medium">
 									Full name
 								</label>
-								<Input
-									type="text"
-									id="fullName"
-									name="fullName"
-									value={formData.fullName}
-									placeholder="John Doe"
-									icon={UserIcon}
-									onChange={handleInputChange}
-								/>
+								<div className="relative w-full">
+									<Input
+										type="text"
+										id="fullName"
+										name="fullName"
+										value={formData.fullName}
+										placeholder="John Doe"
+										onChange={handleInputChange}
+									/>
+									<span aria-hidden className="absolute top-1/2 -translate-y-1/2 left-4">
+										<UserIcon />
+									</span>
+								</div>
 								{errors.fullName && <p className="text-red-500 text-sm">{errors.fullName}</p>}
 							</div>
 
@@ -79,35 +85,41 @@ export default function LogIn() {
 								<label htmlFor="email" className="text-noble-black-300 font-medium">
 									Email address
 								</label>
-								<Input
-									type="email"
-									id="email"
-									name="email"
-									value={formData.email}
-									placeholder="johndoe@gmail.com"
-									icon={MailIcon}
-									onChange={handleInputChange}
-								/>
+								<div className="relative w-full">
+									<Input
+										type="email"
+										id="email"
+										name="email"
+										value={formData.email}
+										placeholder="johndoe@gmail.com"
+										onChange={handleInputChange}
+									/>
+									<span aria-hidden className="absolute top-1/2 -translate-y-1/2 left-4">
+										<MailIcon />
+									</span>
+								</div>
 								{errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
 							</div>
 							<div className="flex flex-col gap-4">
 								<label htmlFor="phoneNumber" className="text-noble-black-300 font-medium">
 									Phone number
 								</label>
-								<Input
-									type="text"
-									id="phoneNumber"
-									name="phoneNumber"
-									placeholder="+2349013347728"
-									value={formData.phoneNumber}
-									icon={PhoneIcon}
-									onChange={handleInputChange}
-								/>
+								<div className="relative w-full">
+									<Input
+										type="text"
+										id="phoneNumber"
+										name="phoneNumber"
+										placeholder="+2349013347728"
+										value={formData.phoneNumber}
+										onChange={handleInputChange}
+									/>
+									<span aria-hidden className="absolute top-1/2 -translate-y-1/2 left-4">
+										<PhoneIcon />
+									</span>
+								</div>
 								{errors.phoneNumber && <p className="text-red-500 text-sm">{errors.phoneNumber}</p>}
 							</div>
-							<button className="mt-12 w-full h-12 bg-noble-green-500 text-noble-black-0 rounded-[8px]">
-								Get Started
-							</button>
+							<Button className="mt-12">Get Started</Button>
 						</form>
 					</div>
 				</div>
